@@ -2,7 +2,7 @@
 
 namespace Mpwarfwk;
 
-class Routing
+Class Routing
 {
  	
 	public function getRoute(){

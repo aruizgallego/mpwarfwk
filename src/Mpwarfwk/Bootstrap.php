@@ -12,7 +12,8 @@ class Bootstrap
     public function execute()
     {
         $routing = new Routing();
-        $controller_class = $routing->getRoute('home');
+       
+        $controller_class = $routing->getRoute($_SERVER['REQUEST_URI']);
 
         $controller = new $controller_class();
         $controller->build;
