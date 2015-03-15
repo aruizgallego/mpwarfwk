@@ -1,5 +1,7 @@
 <?php
 
+namespace Mpwarfwk;
+
 class Request{
 
 	private $url;
