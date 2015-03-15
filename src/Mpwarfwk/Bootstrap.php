@@ -4,21 +4,29 @@ namespace Mpwarfwk;
 
 class Bootstrap
 {
- 	public function __construct()
+
+    protected $environment;
+
+ 	public function __construct($environment)
     {
-    	echo 'Test';
+    	$this->environment = $environment;
+        echo 'Constructor de Bootstrap<br/>';
     }
 
     public function execute()
     {
-        $routing = new Routing();
-       
-        $controller_class = $routing->getRoute($_SERVER['REQUEST_URI']);
+        $routing = new Routing($_SERVER['REQUEST_URI']);
 
-        $controller = new $controller_class();
-        $controller->build;
+        $routing->getRoute();
+        //$request = new Request($clase, $metodo, $parametros);
+
+        $controller = new $routing->clase();
+        $controller->build();
     }
 
 
 
 }
+
+
+
