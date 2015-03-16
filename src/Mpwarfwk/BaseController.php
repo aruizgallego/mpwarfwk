@@ -4,6 +4,6 @@ namespace Mpwarfwk;
 
 Abstract Class BaseController{
 
-	abstract public function index();
+	abstract function index();
 	
 }

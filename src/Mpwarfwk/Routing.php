@@ -5,26 +5,27 @@ namespace Mpwarfwk;
 Class Routing
 {
  	
- 	private $url;
  	public $clase;
  	public $metodo;
  	public $parameto;
 
-	public function __construct($url){
+	public function __construct(){
 
-		$this->url = $url;
 		$this->metodo = 'index';
 	}
 
-	public function getRoute(){
-		
+	public function getRoute(Request $request){
+
+		$url = $request->server->getString('REQUEST_URI');
+
 		include DOCUMENT_ROOT.'/src/'.'config.php';
 
 		//$url = str_replace('/','',$url);
+
 		foreach ($route as $key => $value) {
 
-			if ($this->url == $key){
-				$val = preg_replace('#^'.$key.'$#', $value, $this->url);
+			if ($url == $key){
+				$val = preg_replace('#^'.$key.'$#', $value, $url);
 				$dir = explode('\\',$val);
 
 				$this->clase = $dir[0].'\\'.$dir[1].'\\'.$dir[2];
@@ -35,17 +36,10 @@ Class Routing
 					$this->parameto = $dir[4];
 				}
 
-				//echo 'clase = '.$this->clase.'<br>';
-				//echo 'metodo = '.$this->metodo.'<br>';
-				//echo 'parameto = '.$this->parameto.'<br>';
-				return;
+				$route = new Route($this->clase, $this->metodo);
+				return $route;
 			}
-
-
-
 		}
-
-		
 		//return "Controller\\Home\\Home";
 
 	}

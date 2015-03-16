@@ -4,23 +4,20 @@ namespace Mpwarfwk;
 
 class Request{
 
-	const HEADER_CLIENT_IP = 'client_ip';
-    const HEADER_CLIENT_HOST = 'client_host';
-    const HEADER_CLIENT_PROTO = 'client_proto';
-    const HEADER_CLIENT_PORT = 'client_port';
-
-    const METHOD_HEAD = 'HEAD';
-    const METHOD_GET = 'GET';
-    const METHOD_POST = 'POST';
-
-
+ 	public $get;
+ 	public $post;
  	public $server;
- 	public $files;
  	public $cookies;
  	public $session;
 
-	public function __construct(){
+	public function __construct(Session $session){
+		$this->get = new Parameters($_GET);
+		$this->post = new Parameters($_POST);
+		$this->server = new Parameters($_SERVER);
+		$this->cookies = new Parameters($_COOKIE);
+		$this->session = $session;
 
+		$_GET = $_POST = $_COOKIE = $_SERVER = array();
 	}
 
 }
