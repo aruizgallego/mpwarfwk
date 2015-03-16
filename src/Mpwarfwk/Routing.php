@@ -13,6 +13,7 @@ Class Routing
 	public function __construct($url){
 
 		$this->url = $url;
+		$this->metodo = 'index';
 	}
 
 	public function getRoute(){
@@ -21,10 +22,11 @@ Class Routing
 
 		//$url = str_replace('/','',$url);
 		foreach ($route as $key => $value) {
+
 			if ($this->url == $key){
 				$val = preg_replace('#^'.$key.'$#', $value, $this->url);
 				$dir = explode('\\',$val);
-			//desmonto
+
 				$this->clase = $dir[0].'\\'.$dir[1].'\\'.$dir[2];
 				if(count($dir)>3){
 					$this->metodo = $dir[3];
@@ -33,8 +35,13 @@ Class Routing
 					$this->parameto = $dir[4];
 				}
 
+				//echo 'clase = '.$this->clase.'<br>';
+				//echo 'metodo = '.$this->metodo.'<br>';
+				//echo 'parameto = '.$this->parameto.'<br>';
 				return;
 			}
+
+
 
 		}
 

@@ -21,7 +21,7 @@ class Bootstrap
         //$request = new Request($clase, $metodo, $parametros);
 
         $controller = new $routing->clase();
-        $controller->build();
+        call_user_func(array($controller, $routing->metodo));
     }
 
 
