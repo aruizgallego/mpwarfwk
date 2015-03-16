@@ -13,8 +13,8 @@ class JsonResponse extends Response{
 
 		header('conten-type: application/json')
 
-		if(!is_array(content)){
-			this content = array(content);
+		if(!is_array($this->content)){
+			$this->content = array($this->content);
 		}
 		echo json_encode($this->content);
 	}

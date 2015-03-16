@@ -10,7 +10,7 @@ class Bootstrap
  	public function __construct($environment)
     {
     	$this->environment = $environment;
-        echo 'Constructor de Bootstrap<br/>';
+        //echo 'Constructor de Bootstrap<br/>';
     }
 
     public function execute()
