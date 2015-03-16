@@ -28,8 +28,9 @@ class Bootstrap
 
     public function executeController($route, $request)
     {
-        $controller_class = new $route->getClass();
-        return  call_user_func(array($controller_class, $route->getAccion()));
+        $class = $route->getClass();
+        $controller_class = new $class;
+        return call_user_func(array($controller_class, $route->getAccion()),$request);
         
     }
 

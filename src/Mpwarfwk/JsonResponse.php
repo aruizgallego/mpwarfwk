@@ -1,6 +1,7 @@
 <?php
 
 namespace Mpwarfwk;
+use Mpwarfwk\Response;
 
 class JsonResponse extends Response{
 
@@ -12,7 +13,9 @@ class JsonResponse extends Response{
 
 		header('conten-type: application/json')
 
-		if(!is_array(content)) this content = arrau(content);
+		if(!is_array(content)){
+			this content = array(content);
+		}
 		echo json_encode($this->content);
 	}
 

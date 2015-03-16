@@ -14,9 +14,12 @@ class Parameters
     	$this->parameters = $parameters;
     }
 
-    public function getString($key){
+    //get sets all, has, remove etc fantasia extrema
+
+    public function get($key){
     	return $this->parameters[$key];
     }
+
 
     public function getRowValue($key)
     {
