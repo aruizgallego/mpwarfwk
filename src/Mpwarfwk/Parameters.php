@@ -18,7 +18,7 @@ class Parameters
 
     public function get($key){
     	if(!empty($this->parameters[$key])){
-            return $this->parameters[key];
+            return $this->parameters[$key];
         }
         return false;
     }
@@ -28,7 +28,7 @@ class Parameters
     }
 
     public function exists($key){
-        if (array_key_exists($key, $this->p$this->parameters)){
+        if (array_key_exists($key, $this->parameters)){
             return true;
         }else{
             return false;
