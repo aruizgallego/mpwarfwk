@@ -1,8 +1,8 @@
 <?php
 
-namespace Mpwarfwk;
+namespace Mpwarfwk\Components;
 
-use Mpwarfwk\Session;
+use Mpwarfwk\Components\Session;
 
 class Parameters
 {

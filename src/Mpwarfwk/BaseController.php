@@ -2,15 +2,17 @@
 
 namespace Mpwarfwk;
 
-use Mpwarfwk\Request;
-use Mpwarfwk\TwigTemplate;
-use Mpwarfwk\SmartyTemplate;
+use Mpwarfwk\Components\Request;
+use Mpwarfwk\Templating\TwigTemplate;
+use Mpwarfwk\Templating\SmartyTemplate;
+use Mpwarfwk\Components\SQL;
 
 Abstract Class BaseController{
 
 
 	protected $twig;
 	protected $smarty;
+	protected $db;
 	//shortcut para uso de plantillas 
 		//$this->template() (desde cualquier controller)
 		//devuelve response	
@@ -19,6 +21,7 @@ Abstract Class BaseController{
 
 		$this->twig = new TwigTemplate();
 		$this->smarty = new SmartyTemplate();
+		$this->smarty = new SQL();
 	}
 
 

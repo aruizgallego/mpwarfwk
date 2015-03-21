@@ -1,6 +1,6 @@
 <?php
 
-namespace Mpwarfwk;
+namespace Mpwarfwk\Routing;
 
 Class Routing
 {
@@ -16,7 +16,7 @@ Class Routing
 		include DOCUMENT_ROOT.'/src/Config/Route.php';
 
 		$urlParts = explode('/',$url); 
-		var_dump($urlParts);
+		
 		$urlKey = $urlParts[1].'/'.$urlParts[2];
 
 		foreach ($route as $key => $value) {

@@ -1,7 +1,7 @@
 <?php
 
-namespace Mpwarfwk;
-use Mpwarfwk\Response;
+namespace Mpwarfwk\Components;
+use Mpwarfwk\Components\Response;
 
 class JsonResponse extends Response{
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Mpwarfwk;
-use Twig;
-use Templating;
+namespace Mpwarfwk\Templating;
+use Templating\Twig;
+use Mpwarfwk\Templating\Templating;
 
 Class TwigTemplate implements Templating{
 
@@ -15,7 +15,7 @@ Class TwigTemplate implements Templating{
 			'debug' => true,
 		);
 
-		$loader = new \Twig_Loader_Filesystem( DOCUMENT_ROOT.'/src/views/' );
+		$loader = new \Twig_Loader_Filesystem( DOCUMENT_ROOT.'/src/Templates/' );
 		$twig = new \Twig_Environment( $loader, $config );
 		$this->twig = $twig;
 

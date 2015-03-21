@@ -1,6 +1,6 @@
 <?php
 
-namespace Mpwarfwk;
+namespace Mpwarfwk\Components;
 
 Class Route{
 	

@@ -1,12 +1,12 @@
 <?php
 
-namespace Mpwarfwk;
+namespace Mpwarfwk\Services;
 
 Class SubService2{
 	
 	public function __construct(){
 
-		echo "Construct SubService2";
+		echo "Construct SubService2 <br>";
 
 	}
 
