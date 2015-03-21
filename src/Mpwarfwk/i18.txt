@@ -1,0 +1,25 @@
+i18n
+
+clase que le pasaremos una key y un idioma y nos devuelve la traduccion.
+
+
+config con las relaciones
+
+key con la traduccion
+config por cada idioma.
+pasamelo
+
+
+profiler
+
+al final del bootstrap antes del response llamo al componente del porifling.
+
+en el profiler;
+	
+En cada sitio se crea una clase statica 
+
+bbdddatacollector::getInstance()->getProfileData;
+bootstraptacollector::getInstance()->getProfileData;
+Mongotacollector::getInstance()->getProfileData;
+
+ProfilerDataCollector

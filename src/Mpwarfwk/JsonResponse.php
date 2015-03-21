@@ -7,11 +7,11 @@ class JsonResponse extends Response{
 
 	public function send(){
 
-		if(status != 200)
+		if($this->status != 200){
 			header("HTTP/1.0 404 not Found");
 		}
 
-		header('conten-type: application/json')
+		header('conten-type: application/json');
 
 		if(!is_array($this->content)){
 			$this->content = array($this->content);

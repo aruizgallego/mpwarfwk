@@ -13,14 +13,16 @@ Class Routing
 
 		$url = $request->server->get('REQUEST_URI');
 
-		include DOCUMENT_ROOT.'/src/config.php';
+		include DOCUMENT_ROOT.'/src/Config/Route.php';
 
-		$url = $this->cleanUrl($url);
+		$urlParts = explode('/',$url); 
+		var_dump($urlParts);
+		$urlKey = $urlParts[1].'/'.$urlParts[2];
 
 		foreach ($route as $key => $value) {
 			$metodo = 'index';
-			if ($url == $key){
-				$val = preg_replace('#^'.$key.'$#', $value, $url);
+			if ($urlKey == $key){
+				$val = preg_replace('#^'.$key.'$#', $value, $urlKey);
 				$dir = explode('\\',$val);
 
 				$clase = $dir[0].'\\'.$dir[1].'\\'.$dir[2];
@@ -37,16 +39,6 @@ Class Routing
 		}
 		return false;
 
-	}
-
-	private function cleanUrl($url){
-		$url = filter_var($url, FILTER_SANITIZE_URL);
-		
-		$url_array = str_split($url);
-		if(end($url_array) == '/'){
-			array_pop($url_array);
-		}
-		return implode($url_array);
 	}
 
 }

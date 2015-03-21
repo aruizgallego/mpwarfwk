@@ -1,6 +1,8 @@
 <?php
 
+namespace Mpwarfwk;
 use Smarty;
+use Templating;
 
 Class SmartyTemplate implements Templating{
 

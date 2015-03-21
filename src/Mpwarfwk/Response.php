@@ -4,8 +4,8 @@ namespace Mpwarfwk;
 
 class Response{
 
- 	public $content;
- 	public $status;
+ 	protected $content;
+ 	protected $status;
  
 
 	public function __construct($content, $status = 200){
