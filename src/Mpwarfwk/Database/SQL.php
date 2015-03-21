@@ -1,7 +1,6 @@
 <?php
 
-namespace Mpwarfwk\SQL;
-//namespace Mpwar\COmponentes\Database
+namespace Mpwarfwk\Database;
 
 //use \PDO;
 //use PDO\Exception;

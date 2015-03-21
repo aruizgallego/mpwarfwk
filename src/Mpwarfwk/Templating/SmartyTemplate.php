@@ -1,7 +1,7 @@
 <?php
 
 namespace Mpwarfwk\Templating;
-use Templating\Smarty;
+use Smarty;
 use Mpwarfwk\Templating\Templating;
 
 Class SmartyTemplate implements Templating{

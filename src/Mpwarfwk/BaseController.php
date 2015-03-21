@@ -5,7 +5,7 @@ namespace Mpwarfwk;
 use Mpwarfwk\Components\Request;
 use Mpwarfwk\Templating\TwigTemplate;
 use Mpwarfwk\Templating\SmartyTemplate;
-use Mpwarfwk\Components\SQL;
+use Mpwarfwk\Database\SQL;
 
 Abstract Class BaseController{
 

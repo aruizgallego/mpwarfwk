@@ -1,6 +1,7 @@
 <?php
 
 namespace Mpwarfwk\Routing;
+use Mpwarfwk\Components\Request;
 
 Class Routing
 {

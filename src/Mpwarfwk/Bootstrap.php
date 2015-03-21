@@ -2,6 +2,7 @@
 
 namespace Mpwarfwk;
 use Mpwarfwk\Components\Request;
+use Mpwarfwk\Components\Session;
 use Mpwarfwk\Routing\Routing;
 
 class Bootstrap

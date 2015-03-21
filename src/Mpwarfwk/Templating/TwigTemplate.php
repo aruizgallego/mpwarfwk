@@ -1,7 +1,7 @@
 <?php
 
 namespace Mpwarfwk\Templating;
-use Templating\Twig;
+use Twig;
 use Mpwarfwk\Templating\Templating;
 
 Class TwigTemplate implements Templating{
