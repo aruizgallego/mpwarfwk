@@ -6,7 +6,7 @@ Class TestService2{
 	
 	public function __construct($subservice1, $subservice2){
 
-		echo "Construct TestService2 <br>";
+		echo "Construct TestService2 con Subservice1 y Subservice 2 Inyectados<br>";
 
 	}
 

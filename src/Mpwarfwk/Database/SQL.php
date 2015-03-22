@@ -2,48 +2,94 @@
 
 namespace Mpwarfwk\Database;
 
-//use \PDO;
-//use PDO\Exception;
+use \PDO;
+use \PDO\Exception;
 
-Class SQL{
+Class SQL extends PDO{
 
-	private $db;
+	private $con;
+	private $stmt;
+	private $host;
+	private $port;
+	private $dbname;
+	private $user;
+	private $password;
 
-	public function __construct(){
+	public function __construct($host, $port, $dbname, $user, $password){
 
-		$this->db = new PDO("mysql:host=127.0.0.1;port=8889;dbname=mydb", "root", "");
-		//$this->connecion = new PDO("mysql:host=127.0.0.1;port=8889; dbname=mydb", "root", "password");
-
+		$this->host = $host;
+		$this->port = $port;
+		$this->dbname = $dbname;
+		$this->user = $user;
+		$this->password = $password;
+		$this->connect();
 	}
 
 	public function connect(){
 
-		
+		try{
+			$dsn = 'mysql:host='.$this->host.';port:3306;dname='.$this->dbname;
+			$this->con = new PDO($dsn, $this->user, $this->password);
+			$this->con->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
+
+		}
+		catch(PDOException $e){
+
+			print('Error: No puede conectarse a la base de datos');
+			exit;
+
+		}
+
 	}
 
-	public function executeQuery(){
-
-		
+	public function query($query){
+		$this->stmt = $this->con->prepare($query);
 	}
 
-	public function insert(){
-
-		
+	public function bind($param, $value){
+		$this->stmt->bindParam($param, $value);
 	}
 
-	public function select(){
-
-		
+	public function execute(){
+		return $this->stmt->execute();
 	}
 
-	public function update(){
-
-		
+	public function resultSet(){
+		$this->stmt->execute();
+		return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	public function delete(){
+	public function single(){
+		$this->stmt->execute();
+		return $this->stmt->fetch(PDO::FETCH_ASSOC);
+	}
 
-		
+	public function insert(Array $keys, $table, Array $values){
+
+		$keys = implode(',', $keys);
+		$values = implode(',', $values);
+
+		$query = "INSERT INTO ".$table." (".$keys.") VALUES (".$values.")";
+
+		$this->stmt = $this->con->prepare($query);
+		$this->stmt->execute();
+
+	}
+
+	public function update($table, $set, $where){
+
+		$query = "UPDATE ".$table." SET ".$set." WHERE ".$where;
+
+		$this->stmt = $this->con->prepare($query);
+		$this->stmt->execute();
+	}
+
+	public function delete($table, $where){
+
+		$query = "DELETE FROM ".$table." WHERE ".$where;
+
+		$this->stmt = $this->con->prepare($query);
+		$this->stmt->execute();
 	}
 
 

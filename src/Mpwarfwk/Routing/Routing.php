@@ -2,9 +2,13 @@
 
 namespace Mpwarfwk\Routing;
 use Mpwarfwk\Components\Request;
+use Symfony\Component\Yaml\Yaml;
 
 Class Routing
 {
+
+	const DEFAULT_CLASS = 'Controller\Home\Home';
+	const METHOD_CLASS = 'welcome';
  	
 	public function __construct(){
 
@@ -14,14 +18,20 @@ Class Routing
 
 		$url = $request->server->get('REQUEST_URI');
 
-		include DOCUMENT_ROOT.'/src/Config/Route.php';
+		$route = Yaml::parse(file_get_contents(DOCUMENT_ROOT.'/src/Config/Route.yml'));
 
 		$urlParts = explode('/',$url); 
 		
-		$urlKey = $urlParts[1].'/'.$urlParts[2];
-
+		if(count($urlParts)>2){
+			$urlKey = $urlParts[1].'/'.$urlParts[2];
+		}else{
+			$urlKey = $urlParts[1];
+		}
+		
+		$clase = self::DEFAULT_CLASS;
+		$metodo = self::METHOD_CLASS;
 		foreach ($route as $key => $value) {
-			$metodo = 'index';
+			
 			if ($urlKey == $key){
 				$val = preg_replace('#^'.$key.'$#', $value, $urlKey);
 				$dir = explode('\\',$val);
@@ -33,12 +43,10 @@ Class Routing
 				if(count($dir)>4){
 					$parameto = $dir[4];
 				}
-
-				$route = new Route($clase, $metodo);
-				return $route;
 			}
 		}
-		return false;
+		$route = new Route($clase, $metodo);
+		return $route;
 
 	}
 

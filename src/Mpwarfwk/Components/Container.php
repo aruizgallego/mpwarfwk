@@ -1,6 +1,7 @@
 <?php
 
 namespace Mpwarfwk\Components;
+use Symfony\Component\Yaml\Yaml;
 
 Class Container{
 
@@ -8,7 +9,7 @@ Class Container{
 
 	public function get($service){
 
-		include DOCUMENT_ROOT.'/src/Config/Services.php';
+		$config = Yaml::parse(file_get_contents(DOCUMENT_ROOT.'/src/Config/Services.yml'));
 		$arguments = array();
 
 		if (!empty($config[$service])){
