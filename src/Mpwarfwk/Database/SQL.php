@@ -28,7 +28,7 @@ Class SQL extends PDO{
 	public function connect(){
 
 		try{
-			$dsn = 'mysql:host='.$this->host.';port:3306;dname='.$this->dbname;
+			$dsn = 'mysql:host='.$this->host.';port:'.$this->port.';dname='.$this->dbname;
 			$this->con = new PDO($dsn, $this->user, $this->password);
 			$this->con->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
 

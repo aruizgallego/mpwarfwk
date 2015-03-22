@@ -7,9 +7,9 @@ use Mpwarfwk\Components\i18n;
 use Mpwarfwk\Templating\TwigTemplate;
 use Mpwarfwk\Templating\SmartyTemplate;
 use Mpwarfwk\Database\SQL;
+use Symfony\Component\Yaml\Yaml;
 
 Abstract Class BaseController{
-
 
 	protected $twig;
 	protected $smarty;
@@ -23,7 +23,10 @@ Abstract Class BaseController{
 
 		$this->twig = new TwigTemplate();
 		$this->smarty = new SmartyTemplate();
-		$this->db = new SQL('127.0.0.1','3306','frameworkdb','mpwaruser','1234');
+
+		$database = Yaml::parse(file_get_contents(DOCUMENT_ROOT.'/src/Config/Database.yml'));
+
+		$this->db = new SQL($database['host'],$database['port'],$database['dbname'],$database['user'],$database['password']);
 		$this->i18n = new i18n();
 	}
 
